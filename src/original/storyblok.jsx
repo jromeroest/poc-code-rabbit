@@ -13,18 +13,6 @@ const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 
-  useEffect(() => {
-    Storyblok.get("cdn/stories/home", {})
-      .then((response) => {
-        setStory(response.data.story);
-        setLoading(false);
-      })
-      .catch(() => {
-        setError(true);
-        setLoading(false);
-      });
-  }, []);
-
   const renderContent = (content) => {
     return content.map((blok, index) => {
       if (blok.component === "text") {
